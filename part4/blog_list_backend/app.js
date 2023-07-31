@@ -6,17 +6,18 @@ const logger = require('./utils/logger')
 const notesRouter = require('./controllers/notes')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
+const middleware = require('./utils/middleware')
 
 mongoose.set('strictQuery', false)
 
-logger('connecting to', config.MONGODB_URI)
+logger.info('connecting to', config.MONGODB_URI)
 
 mongoose.connect(config.MONGODB_URI)
   .then(() => {
-    logger('Connected to MongoDB')
+    logger.info('Connected to MongoDB')
   })
   .catch(error => {
-    logger('Error connecting to MongoDB', error.message)
+    logger.info('Error connecting to MongoDB', error.message)
   })
 
 app.use(cors())
@@ -24,5 +25,8 @@ app.use(express.json())
 app.use(morgan('tiny'))
 
 app.use('/api/blogs', notesRouter)
+
+app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
 
 module.exports = app
