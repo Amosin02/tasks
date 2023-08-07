@@ -1,9 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6IjY0ZDA0YzA5MjAxY2ZjOGIzMWZjNTlmZSIsImlhdCI6MTY5MTQwNDc4NX0.BSVcW9oBc64ysEDdEttcCrpEmXzpSbj3tMkl7PCAoiU
 
 {
-  "title": "title4",
-  "author": "another authors",
-  "url": "http://justSomeURL1234",
-  "likes": 25
+  "title": "tokenDataa3",
+  "author": "author1",
+  "url": "http://SOMEURL2",
+  "likes": 3535
 }
